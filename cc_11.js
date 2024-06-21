@@ -1,3 +1,4 @@
+//U9414-0233
 // Data
 const dataset = [100, 420, 230, 850, 560, 925];
 
@@ -40,3 +41,11 @@ bar.append("text")
     .attr("y", barHeight / 2)
     .attr("dy", ".35em")
     .text(d => d);
+
+bar.selectAll("rect")
+    .on("mouseover", function() {
+        d3.select(this).attr("fill", "orange");
+    })
+    .on("mouseout", function() {
+        d3.select(this).attr("fill", "steelblue");
+    });
