@@ -33,3 +33,10 @@ bar.append("rect")
     .transition()
     .duration(800)
     .attr("width", d => xScale(d));
+
+bar.append("text")
+    .attr("class", "label")
+    .attr("x", d => xScale(d) - 5)
+    .attr("y", barHeight / 2)
+    .attr("dy", ".35em")
+    .text(d => d);
