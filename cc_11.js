@@ -19,3 +19,17 @@ const svg = d3.select("body")
 const xScale = d3.scaleLinear()
     .domain([0, d3.max(dataset)])
     .range([0, width]);
+
+const bar = svg.selectAll("g")
+    .data(dataset)
+    .enter()
+    .append("g")
+    .attr("transform", (d, i) => `translate(0,${i * (barHeight + barMargin)})`);
+
+bar.append("rect")
+    .attr("class", "bar")
+    .attr("width", 0) // Initial width for transition
+    .attr("height", barHeight)
+    .transition()
+    .duration(800)
+    .attr("width", d => xScale(d));
